@@ -17,10 +17,10 @@ public class DealerService {
     private final Set<String> validConfigurations = new HashSet<>();
 
     public DealerService() {
-        validColors.add("Чёрный");
+        validColors.add("Black");
         validBrands.add("BMW");
         validModels.add("X5");
-        validConfigurations.add("СуперПремиум");
+        validConfigurations.add("SuperPremium");
     }
 
     public void processCars(DealerCenterDTO dealer, List<CarDTO> carList) {

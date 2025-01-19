@@ -27,8 +27,8 @@ public class DealerServiceTest {
 
     @Test
     public void verifyMultithreadedProcessing() throws InterruptedException {
-        // Подготовка тестовых данных: создаем список автомобилей
         List<CarDTO> cars = generateCarList(3000);
+        System.out.println(cars.size());
 
         // Разбиваем список на три части для потоков
         List<CarDTO> firstBatch = cars.subList(0, 1000);

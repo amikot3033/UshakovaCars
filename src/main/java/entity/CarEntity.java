@@ -11,7 +11,7 @@ public class CarEntity {
 
     @Override
     public String toString() {
-        return "CarEntity{" +
+        return "{" +
                 "id=" + id +
                 ", carModelId=" + carModelId +
                 ", dealershipName='" + dealershipName + '\'' +
