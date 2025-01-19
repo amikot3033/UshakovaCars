@@ -1,93 +1,64 @@
+package dto;
+
 import java.util.Objects;
 
 public class CarModelDTO {
-    private static int idCounter = 0;
-    private Integer id;
+
+    private long id;
     private String brand;
-    private String modelName;
-    private String countryOriginal;
+    private String model;
+    private String countryOrigin;
     private String countryCode;
 
-    public Integer getId() {
-        return this.id;
+    public CarModelDTO(long id, String brand, String model, String countryOrigin, String countryCode) {
+        this.id = id;
+        this.brand = brand;
+        this.model = model;
+        this.countryOrigin = countryOrigin;
+        this.countryCode = countryCode;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public long getId() {
+        return id;
     }
 
     public String getBrand() {
-        return this.brand;
+        return brand;
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
+    public String getModel() {
+        return model;
     }
 
-    public String getModelName() {
-        return this.modelName;
-    }
-
-    public void setModelName(String modelName) {
-        this.modelName = modelName;
-    }
-
-    public String getCountryOriginal() {
-        return this.countryOriginal;
-    }
-
-    public void setCountryOriginal(String countryOriginal) {
-        this.countryOriginal = countryOriginal;
+    public String getCountryOrigin() {
+        return countryOrigin;
     }
 
     public String getCountryCode() {
-        return this.countryCode;
+        return countryCode;
     }
 
-    public void setCountryCode(String countryCode) {
-        this.countryCode = countryCode;
-    }
-
-    public CarModelDTO(String brand, String modelName, String countryOriginal, String countryCode) {
-        this.id = ++idCounter;
-        this.brand = brand;
-        this.modelName = modelName;
-        this.countryOriginal = countryOriginal;
-        this.countryCode = countryCode;
-    }
-
-    public String toString() {
-        return " id=" + this.id + ", brand='" + this.brand + "', modelName='" + this.modelName + "', countryOriginal='" + this.countryOriginal + "', countryCode='" + this.countryCode + "' ";
-    }
-
+    @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        } else if (o != null && this.getClass() == o.getClass()) {
-            CarModelDTO that = (CarModelDTO)o;
-            return Objects.equals(this.brand, that.brand) && Objects.equals(this.modelName, that.modelName);
-        } else {
-            return false;
-        }
+        if (this == o) return true;
+        if (!(o instanceof CarModelDTO)) return false;
+        CarModelDTO that = (CarModelDTO) o;
+        return id == that.id ||
+                (Objects.equals(brand, that.brand) && Objects.equals(model, that.model));
     }
 
+    @Override
     public int hashCode() {
-        return Objects.hash(new Object[]{this.brand, this.modelName});
+        return Objects.hash(id, brand, model);
     }
 
-    public boolean equalsId(Object o) {
-        if (this == o) {
-            return true;
-        } else if (o != null && this.getClass() == o.getClass()) {
-            CarModelDTO that = (CarModelDTO)o;
-            return Objects.equals(this.id, that.id);
-        } else {
-            return false;
-        }
-    }
-
-    public int hashCodeId() {
-        return Objects.hash(new Object[]{this.id});
+    @Override
+    public String toString() {
+        return id + " " +
+                (brand != null ? brand : "N/A") + " " +
+                (model != null ? model : "N/A") + " " +
+                (countryOrigin != null ? countryOrigin : "N/A") + " " +
+                (countryCode != null ? countryCode : "N/A");
     }
 }
 
